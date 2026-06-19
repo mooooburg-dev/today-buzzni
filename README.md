@@ -1,36 +1,42 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 오늘의 버즈니 (Today's Buzzni)
 
-## Getting Started
+> 슬랙에 흘려보낸 오늘의 희로애락, 그냥 스크롤로 사라지긴 아쉽잖아요.
+> AI가 그 하루를 **사내 일간지 1면**으로 박제해 드립니다 — 헤드라인부터 4컷 만평, 감정지수까지. 📰
 
-First, run the development server:
+## ✨ 주요 기능
+
+- **채널 선택** → 오늘의 스레드 자동 수집
+- **AI 분석**으로 4가지 생성
+  - 📰 오늘의 헤드라인 (신문 1면 스타일)
+  - 🎨 4컷 만평 (장면 + 대사가 그려진 AI 이미지)
+  - 💬 오늘의 한 줄 (사설)
+  - 📊 감정지수 (억울함·유대감·현타·그래도내일은)
+- **결과 캐싱** — 한 번 생성한 결과/이미지는 저장해 두고, 같은 날 같은 채널은 다시 불러옴
+
+## 🛠 기술 스택
+
+- **Next.js 16** (App Router) · TypeScript · Tailwind CSS v4
+- **OpenAI** — 텍스트 분석(`gpt-4o-mini`) + 이미지 생성(`gpt-image`)
+- **Supabase Storage** — 결과·이미지 캐싱
+- **Slack Web API** (현재는 샘플 스레드 목업으로 동작)
+
+## 🚀 실행
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+cp .env.local.example .env.local   # OPENAI/SUPABASE 키 입력
+npm install
+npm run dev                        # http://localhost:3020
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+> Slack 토큰을 비워두면 내장 샘플 스레드(목업)로 전체 흐름을 체험할 수 있습니다.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📁 구조
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+app/        페이지 · API 라우트(slack, generate)
+components/ 신문 UI 카드(헤드라인 · 4컷 · 사설 · 감정지수)
+lib/        slack · openai · supabase · mock
+types/      공통 타입
+```
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+자세한 설계는 [`CLAUDE.md`](./CLAUDE.md) 참고.
