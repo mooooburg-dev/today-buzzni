@@ -15,7 +15,34 @@
 }
 
 body {
-  background: var(--background);
+  background-color: #ece5d8;
   color: var(--foreground);
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  /* 신문지 하프톤 도트 질감 */
+  background-image: radial-gradient(rgba(28, 25, 23, 0.04) 0.5px, transparent 0.6px);
+  background-size: 4px 4px;
+}
+
+/* 신문 제호용 자간 좁은 세리프 */
+.font-masthead {
+  font-family: var(--font-serif), Georgia, "Times New Roman", serif;
+  letter-spacing: -0.02em;
+}
+
+/* 신문 라벨(작은 대문자, 넓은 자간) */
+.kicker {
+  font-family: var(--font-sans), sans-serif;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+}
+
+/* 본문 첫 글자 드롭캡 */
+.dropcap::first-letter {
+  font-family: var(--font-serif), Georgia, serif;
+  font-weight: 900;
+  float: left;
+  font-size: 3.2rem;
+  line-height: 0.8;
+  padding: 0.1rem 0.5rem 0 0;
+  color: #1c1917;
 }

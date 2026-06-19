@@ -10,9 +10,12 @@ interface Props {
 export default function WebtoonCard({ webtoon }: Props) {
   return (
     <section className="bg-[#f5f0e8] px-2 py-6">
-      <h2 className="mb-4 text-center font-serif text-2xl font-bold text-stone-900">
-        오늘의 4컷 웹툰
-      </h2>
+      <div className="mb-4 text-center">
+        <p className="kicker text-[10px] text-stone-500">만평 漫評</p>
+        <h2 className="font-masthead text-2xl font-bold text-stone-900">
+          오늘의 4컷
+        </h2>
+      </div>
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         {webtoon.map((cut) => (

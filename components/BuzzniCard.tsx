@@ -20,13 +20,19 @@ export default function BuzzniCard({ result }: Props) {
       {/* 2. 4컷 웹툰 */}
       <WebtoonCard webtoon={result.webtoon} />
 
-      {/* 3. 오늘의 속마음 한 줄 */}
+      {/* 3. 오늘의 속마음 한 줄 (사설) */}
       <section className="border-y border-stone-300 bg-stone-900 px-6 py-8 text-center">
-        <p className="mb-2 text-xs tracking-widest text-stone-400 uppercase">
-          오늘의 한 줄
+        <p className="kicker mb-3 text-[10px] text-stone-400">
+          ─ 사설 社說 · 오늘의 한 줄 ─
         </p>
-        <blockquote className="font-serif text-2xl leading-relaxed font-medium text-[#f5f0e8] italic">
-          “{result.realThought}”
+        <blockquote className="relative mx-auto max-w-xl font-serif text-2xl leading-relaxed font-medium text-[#f5f0e8] italic">
+          <span className="font-masthead absolute -top-4 -left-2 text-5xl text-stone-600 not-italic">
+            “
+          </span>
+          {result.realThought}
+          <span className="font-masthead align-bottom text-5xl text-stone-600 not-italic">
+            ”
+          </span>
         </blockquote>
       </section>
 

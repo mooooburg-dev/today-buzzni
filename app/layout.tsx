@@ -19,6 +19,14 @@ const notoSerif = Noto_Serif_KR({
 export const metadata: Metadata = {
   title: "오늘의 버즈니",
   description: "슬랙 채널의 하루를 신문 1면과 4컷 웹툰으로 재구성하는 사내 웹 서비스",
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+    ],
+    apple: "/apple-touch-icon.png",
+  },
 };
 
 export default function RootLayout({

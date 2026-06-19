@@ -121,11 +121,36 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-[#ece5d8] px-4 py-10">
       <div className="mx-auto max-w-3xl">
-        {/* 헤더 */}
-        <header className="mb-8 text-center">
-          <h1 className="font-serif text-5xl font-black tracking-tight text-stone-900">
-            오늘의 버즈니
-          </h1>
+        {/* 신문 제호 (마스트헤드) */}
+        <header className="mb-8">
+          <div className="border-y-4 border-double border-stone-900 py-4">
+            {/* 상단 라벨 줄 */}
+            <div className="kicker mb-2 flex items-center justify-center gap-2 text-[10px] text-stone-600">
+              <span className="h-px flex-1 bg-stone-400" />
+              <span>사내 일간</span>
+              <span className="h-px flex-1 bg-stone-400" />
+            </div>
+            {/* 제호 */}
+            <h1 className="font-masthead text-center text-6xl font-black text-stone-900">
+              오늘의 버즈니
+            </h1>
+            <p className="kicker mt-1 text-center text-xs text-stone-500">
+              The Buzzni Daily
+            </p>
+          </div>
+          {/* 발행 정보 줄 */}
+          <div className="kicker flex items-center justify-between border-b border-stone-400 px-1 py-1.5 text-[10px] text-stone-600">
+            <span>제1호</span>
+            <span>
+              {new Date().toLocaleDateString('ko-KR', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                weekday: 'long',
+              })}
+            </span>
+            <span>비매품 · 무료 배포</span>
+          </div>
         </header>
 
         {/* 컨트롤 패널 */}
@@ -214,8 +239,8 @@ export default function Home() {
                 {messages.length > 0 ? (
                   <>
                     <p className="mb-3 text-sm font-medium text-stone-700">
-                      생성에 사용된 스레드 · {countMessages(messages)}건 (메인 글{' '}
-                      {messages.length} · 댓글{' '}
+                      생성에 사용된 스레드 · {countMessages(messages)}건 (메인
+                      글 {messages.length} · 댓글{' '}
                       {countMessages(messages) - messages.length})
                     </p>
                     <ul className="max-h-96 space-y-3 overflow-y-auto text-sm text-stone-700">
